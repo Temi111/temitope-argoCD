@@ -1,0 +1,41 @@
+# --- App1 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  namespace: stage
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      containers:
+        - name: app1
+          image: nginx:latest            # 🔁 change to your image for app1
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-service
+  namespace: stage
+spec:
+  type: ClusterIP
+  selector:
+    app: app1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
+
+
+
