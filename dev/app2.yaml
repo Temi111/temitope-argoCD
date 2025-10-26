@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app2
-          image: httpd:latest            # 🔁 change to your image for app2
+          image: httpddddddad:latest            # 🔁 change to your image for app2
           ports:
             - containerPort: 80
 
